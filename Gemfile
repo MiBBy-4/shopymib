@@ -64,6 +64,12 @@ group :development, :test do
   gem 'rubocop-rspec'
 
   gem 'rubocop-performance'
+
+  gem 'factory_bot_rails'
+
+  gem 'faker'
+
+  gem 'rspec-rails'
 end
 
 group :development do
