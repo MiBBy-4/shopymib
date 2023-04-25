@@ -1,5 +1,5 @@
-class AdvertisementsController < ApplicationController
-  def index
+# frozen_string_literal: true
 
-  end
+class AdvertisementsController < ApplicationController
+  def index; end
 end
