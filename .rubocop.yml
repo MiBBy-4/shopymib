@@ -16,3 +16,6 @@ Style/Documentation:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
