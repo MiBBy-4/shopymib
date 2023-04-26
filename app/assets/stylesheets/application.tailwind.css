@@ -2,12 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+/*@layer components {*/
+/*    .btn-blue {*/
+/*        @apply bg-transparent hover:bg-blue-500*/
+/*        @apply text-blue font-semibold*/
+/*        @apply hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded*/
+/*    }*/
+/*}*/
+
+/*!**/
 
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+    .btn-blue {
+        @apply bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border;
+        @apply border-blue-500 hover:border-transparent rounded;
+    }
+
+    .form-checkbox {
+        @apply hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)];
+        @apply h-[1.125rem] w-[1.125rem] cursor-none appearance-none rounded-[0.25rem] border-[0.125rem] border-solid;
+        @apply border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem];
+        @apply before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0;
+        @apply before:shadow-[0px_0px_0px_13px_transparent] before:content-[''];
+        @apply focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12];
+        @apply focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:after:absolute focus:after:z-[1];
+        @apply focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1];
+        @apply focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem];
+        @apply focus:after:content-[''];
+    }
+
+    .form-input {
+        @apply block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6];
+        @apply outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100;
+        @apply peer-focus:text-blue-500 data-[te-input-state-active]:placeholder:opacity-100;
+        @apply motion-reduce:transition-none;
+        @apply [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0;
+    }
+
+    .form-label {
+        @apply pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem];
+        @apply leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem];
+        @apply peer-focus:scale-[0.8] peer-focus:text-blue-500 peer-data-[te-input-state-active]:-translate-y-[0.9rem];
+        @apply peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none;
+    }
 }
 
-*/
+@layer utilities {
+    .form-checkbox {
+        @apply indeterminate:border-blue-500 indeterminate:bg-blue-500 indeterminate:after:absolute;
+        @apply indeterminate:after:ml-[0.2rem] indeterminate:after:mt-[6px] indeterminate:after:w-[0.5rem];
+        @apply indeterminate:after:border-[0.05rem] indeterminate:after:border-solid indeterminate:after:border-white;
+        @apply checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca];
+        @apply checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s];
+        @apply checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem];
+        @apply checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none;
+        @apply checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0;
+        @apply checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent;
+        @apply indeterminate:focus:after:w-[0.5rem] indeterminate:focus:after:rounded-none;
+        @apply indeterminate:focus:after:border-[0.125rem] indeterminate:focus:after:border-b-0;
+        @apply indeterminate:focus:after:border-l-0 indeterminate:focus:after:border-r-0;
+        @apply checked:border-blue-500 checked:bg-blue-500 checked:before:opacity-[0.16] checked:after:absolute;
+        @apply checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem];
+        @apply checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem];
+        @apply checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white;
+        @apply checked:after:bg-transparent checked:after:content-[''];
+    }
+}
