@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   submitEnd(e) {
-    console.log(e);
     if(e.detail.fetchResponse.redirected) {
       location.reload();
     }
