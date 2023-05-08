@@ -63,6 +63,7 @@ jobs:
       - name: Prepare ENV
         run: |
           sudo apt-get update
+          bundle exec rake assets:precompile
           bundle exec bin/rails db:test:prepare
 
       - name: Run RSpec
