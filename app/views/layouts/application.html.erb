@@ -13,8 +13,8 @@
 
   <body class="h-screen">
     <%= render 'shared/navbar' %>
-    <main class="h-full">
-      <%= turbo_frame_tag :modal %>
+    <%= turbo_frame_tag :modal %>
+    <main class="h-full" id="main">
       <%= render 'shared/alerts' %>
       <%= yield %>
     </main>
