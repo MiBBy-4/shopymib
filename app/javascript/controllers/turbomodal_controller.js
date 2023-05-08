@@ -6,7 +6,6 @@ export default class extends Controller {
 
   connect() {
     this.modalTarget.classList.add('modal-window');
-    console.log(this.modalTarget.classList);
   }
 
   submitEnd(e) {

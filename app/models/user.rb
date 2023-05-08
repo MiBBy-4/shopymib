@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :phone_number, length: { is: 13 }, format: { with: /\+375(25|29|33|44)\d{7}/,
                                                          message: 'must be a valid Belarusian phone number' },
-                           uniqueness: { message: 'phone number is already taken' }
+                           uniqueness: { message: 'phone number is already taken' }, allow_blank: true
 
   attr_writer :login
 

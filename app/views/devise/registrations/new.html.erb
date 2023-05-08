@@ -10,7 +10,7 @@
           <div class="px-6 py-6 lg:px-8">
             <div class="flex justify-around">
               <%= link_to "Войти", new_user_session_path,
-                          class: "text-forest", data: {turbo_frame: "modal", action: "turbomodal#hidemodal"} %>
+                          class: "text-forest", data: {turbo_frame: "modal"} %>
               <h3 class="underline underline-offset-8 text-forest">Регистрация</h3>
             </div>
             <%= render "devise/shared/error_messages", resource: resource %>

@@ -5,22 +5,22 @@ module Users
     # before_action :configure_sign_in_params, only: [:create]
 
     # GET /resource/sign_in
-    def new
-      super do
-        respond_to do |format|
-          format.turbo_stream
-        end
-      end
-    end
+    # def new
+    #   super do
+    #     respond_to do |format|
+    #       format.turbo_stream
+    #     end
+    #   end
+    # end
 
     # POST /resource/sign_in
-    def create
-      super do
-        respond_to do |format|
-          format.turbo_stream
-        end
-      end
-    end
+    # def create
+    #   super do
+    #     respond_to do |format|
+    #       format.turbo_stream
+    #     end
+    #   end
+    # end
 
     # DELETE /resource/sign_out
     # def destroy

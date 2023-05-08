@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.fixture_path = Rails.root.join('spec/fixtures')
 
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Rails.application.routes.url_helpers, type: :request
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
