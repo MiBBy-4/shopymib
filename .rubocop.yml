@@ -26,3 +26,10 @@ RSpec/MultipleExpectations:
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - 'app/controllers/users/**'
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
