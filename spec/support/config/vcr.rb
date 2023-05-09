@@ -9,7 +9,7 @@ VCR.configure do |config|
 
   config.hook_into :webmock
 
-  # config.filter_sensitive_data('<API_TOKEN>') do |interaction|
-  #   interaction.request.parsed_uri.query.split('&').first.split('=').second
-  # end
+  config.filter_sensitive_data('<API_TOKEN>') do |interaction|
+    interaction.request.parsed_uri.query&.split('&')&.first&.split('=')&.second
+  end
 end

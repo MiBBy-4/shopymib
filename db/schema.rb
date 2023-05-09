@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_509_113_814) do
 
   create_table 'category_settings', force: :cascade do |t|
     t.string 'name', default: '', null: false
-    t.string 'values_type', default: 'input', null: false
+    t.string 'values_type', default: 'text', null: false
     t.boolean 'required', default: false
     t.bigint 'subcategory_id', null: false
     t.datetime 'created_at', null: false
