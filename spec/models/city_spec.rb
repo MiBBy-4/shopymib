@@ -15,6 +15,7 @@ RSpec.describe City do
   describe 'associations' do
     it do
       expect(subject).to belong_to(:region)
+      expect(subject).to have_many(:advertisements).dependent(:nullify)
     end
   end
 end
