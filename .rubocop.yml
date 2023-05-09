@@ -33,3 +33,9 @@ Rails/UniqueValidationWithoutIndex:
 Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
+
+RSpec/ExampleLength:
+  Max: 10
+
+Lint/MissingSuper:
+  Enabled: false
