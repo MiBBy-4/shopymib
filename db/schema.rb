@@ -12,9 +12,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_509_113_814) do
+ActiveRecord::Schema[7.0].define(version: 20_230_509_195_642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'advertisements', force: :cascade do |t|
+    t.string 'name', default: '', null: false
+    t.text 'description', default: '', null: false
+    t.string 'customer_name'
+    t.string 'customer_email'
+    t.string 'customer_phone'
+    t.boolean 'phone_visible'
+    t.bigint 'city_id', null: false
+    t.bigint 'subcategory_id', null: false
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['city_id'], name: 'index_advertisements_on_city_id'
+    t.index ['subcategory_id'], name: 'index_advertisements_on_subcategory_id'
+    t.index ['user_id'], name: 'index_advertisements_on_user_id'
+  end
 
   create_table 'categories', force: :cascade do |t|
     t.string 'name', default: '', null: false
@@ -80,6 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_509_113_814) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
+  add_foreign_key 'advertisements', 'cities'
+  add_foreign_key 'advertisements', 'subcategories'
+  add_foreign_key 'advertisements', 'users'
   add_foreign_key 'category_settings', 'subcategories'
   add_foreign_key 'cities', 'regions'
   add_foreign_key 'setting_values', 'category_settings'

@@ -7,6 +7,7 @@ RSpec.describe Subcategory do
     it do
       expect(subject).to belong_to(:category)
       expect(subject).to have_many(:category_settings).dependent(:delete_all)
+      expect(subject).to have_many(:advertisements).dependent(:nullify)
     end
   end
 

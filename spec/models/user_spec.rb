@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe User do
+  describe 'associations' do
+    it do
+      expect(subject).to have_many(:advertisements).dependent(:delete_all)
+    end
+  end
+
   describe 'validation' do
     it do
       expect(subject).to validate_length_of(:phone_number).is_equal_to(13)
