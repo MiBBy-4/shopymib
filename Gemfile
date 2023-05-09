@@ -65,6 +65,8 @@ group :development, :test do
 
   gem 'bundler-audit'
 
+  gem 'dotenv-rails'
+
   gem 'rubocop'
 
   gem 'rubocop-rails'

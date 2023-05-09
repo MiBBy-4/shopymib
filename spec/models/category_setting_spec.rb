@@ -19,7 +19,7 @@ RSpec.describe CategorySetting do
 
     it do
       expect(subject).to validate_presence_of(:values_type)
-      expect(subject).to validate_inclusion_of(:values_type).in_array(%w[input select])
+      expect(subject).to validate_inclusion_of(:values_type).in_array(%w[text select radio])
     end
   end
 end

@@ -39,3 +39,7 @@ RSpec/ExampleLength:
 
 Lint/MissingSuper:
   Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - 'db/seeds.rb'
