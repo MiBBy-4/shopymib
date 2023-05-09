@@ -33,9 +33,14 @@ Rails/UniqueValidationWithoutIndex:
 Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
+    - 'db/seeds.rb'
 
 RSpec/ExampleLength:
   Max: 10
 
 Lint/MissingSuper:
   Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - 'db/seeds.rb'

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://car-data.p.rapidapi.com/cars/makes
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Rapidapi-Key:
+      - 0cbbd18445msh7e7c0ba84ff5593p1400d2jsn813f49757542
+      X-Rapidapi-Host:
+      - car-data.p.rapidapi.com
+      Connection:
+      - close
+      Host:
+      - car-data.p.rapidapi.com
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 May 2023 19:25:18 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '589'
+      Connection:
+      - close
+      X-Amzn-Requestid:
+      - e2fdada5-fc15-4e1d-880d-22761d76ad51
+      X-Amz-Apigw-Id:
+      - Eq2kcF8hiYcFlRw=
+      X-Cars-Returned:
+      - '1'
+      X-Amzn-Trace-Id:
+      - Root=1-645a9e1b-19cc09bb1aa5529341ad75ad;Sampled=0;lineage=aaaca9c0:0
+      X-Ratelimit-Requests-Limit:
+      - '1000'
+      X-Ratelimit-Requests-Remaining:
+      - '992'
+      X-Ratelimit-Requests-Reset:
+      - '2667178'
+      Server:
+      - RapidAPI-1.2.8
+      X-Rapidapi-Version:
+      - 1.2.8
+      X-Rapidapi-Region:
+      - AWS - eu-central-1
+    body:
+      encoding: UTF-8
+      string: '["Buick","MINI","Volvo","Ford","HUMMER","GMC","Subaru","Mitsubishi","Dodge","Nissan","Honda","Lincoln","Hyundai","BMW","Bentley","Lexus","Chevrolet","Jaguar","Mercedes-Benz","Volkswagen","Aston
+        Martin","Land Rover","Pontiac","Cadillac","FIAT","Saab","Kia","Lamborghini","Audi","Jeep","MAZDA","Suzuki","Toyota","Acura","Saturn","Chrysler","Isuzu","Ferrari","Tesla","INFINITI","Oldsmobile","Ram","Eagle","Porsche","Mercury","Scion","Lotus","Plymouth","Freightliner","Rolls-Royce","SRT","Maybach","Alfa
+        Romeo","Geo","smart","Daewoo","Maserati","Daihatsu","Genesis","McLaren","Fisker","Panoz"]'
+  recorded_at: Tue, 09 May 2023 19:25:18 GMT
+recorded_with: VCR 6.1.0
