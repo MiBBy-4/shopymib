@@ -6,4 +6,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "advertisements#index"
+
+  resources :advertisements, only: [:index, :new, :create] do
+    collection do
+      get :subcategories
+      get :category_settings
+      get :cities
+    end
+  end
+
+  resources :authenticated, only: [:new, :create]
 end

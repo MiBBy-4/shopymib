@@ -12,9 +12,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_509_195_642) do
+ActiveRecord::Schema[7.0].define(version: 20_230_518_191_630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'advertisement_params', force: :cascade do |t|
+    t.string 'name'
+    t.string 'value'
+    t.bigint 'advertisement_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['advertisement_id'], name: 'index_advertisement_params_on_advertisement_id'
+  end
 
   create_table 'advertisements', force: :cascade do |t|
     t.string 'name', default: '', null: false
@@ -97,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_509_195_642) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
+  add_foreign_key 'advertisement_params', 'advertisements'
   add_foreign_key 'advertisements', 'cities'
   add_foreign_key 'advertisements', 'subcategories'
   add_foreign_key 'advertisements', 'users'

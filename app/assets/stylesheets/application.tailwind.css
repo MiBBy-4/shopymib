@@ -12,6 +12,34 @@
 
 /*!**/
 
+.hidden {
+    display: none;
+}
+
+.form-inp {
+    background-color: rgb(255, 255, 255);
+    color: rgb(158, 146, 146);
+}
+
+.radio input ~ Label {
+    background-color: rgb(255, 255, 255);
+    color: rgb(158, 146, 146);
+}
+
+.radio input:checked ~ Label {
+    background-color: rgb(70, 230, 22);
+    color: white;
+}
+
+.form-check:focus {
+    background-color: rgb(70, 230, 22);
+}
+
+body {
+    background-color: #edf5e1;
+}
+
+
 .bg-green-self {
     background-color: #379683;
 }
@@ -44,13 +72,13 @@
         flex-direction: row;
         align-items: center;
         cursor: pointer;
-        padding: 10px 30px;
+        padding: 10px 10px;
         @apply rounded font-semibold;
     }
 
     .btn-deep-ocean:hover {
         transition: 100ms;
-        padding: 10px 50px;
+        padding: 10px 20px;
         transform: translateY(0);
         background-color: transparent;
         color: #05386b;

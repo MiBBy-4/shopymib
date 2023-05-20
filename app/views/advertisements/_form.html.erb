@@ -1,0 +1,85 @@
+<div class="mx-10">
+  <div>
+    <%= render 'shared/errors', object: advertisement %>
+    <h1 class="text-4xl mt-10 text-center">Ваше объявление</h1>
+    <%= form_with(model: advertisement, local: true, class: 'mt-10', data: { turbo: false }) do |form| %>
+      <div data-controller="subcategory" data-subcategory-url-value="<%= category_settings_advertisements_path %>" data-subcategory-param-value="subcategory">
+       <div class="flex justify-center">
+         <div data-controller="category" data-category-url-value="<%= subcategories_advertisements_path %>" data-category-param-value="category">
+           <div>
+             <%= form.label 'Категория', class: 'font-medium' %>
+             <%= form.collection_select :category_id, categories, :id, :name, { prompt: 'Выберите категорию' },
+                                        { data: { action: 'change->category#change' }, class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500" } %>
+           </div>
+
+           <div class="mt-4">
+             <%= form.label 'Подкатегория', class: "font-medium" %>
+             <%= form.collection_select :subcategory_id, [], :id, :name, { prompt: 'Выберите подкатегорию' },
+                                        { data: { category_target: 'subcategorySelect',
+                                                  action: 'change->subcategory#change' }, class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500" } %>
+           </div>
+         </div>
+       </div>
+
+        <div>
+          <%= form.label 'Название товара/услуги', class: "block font-semibold text-gray-900"%>
+          <%= form.text_field :name, class: "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500" %>
+        </div>
+
+        <%= content_tag(:div, { data: { subcategory_target: 'subcategoryDiv' }, id: 'subcategoryDiv' }) do %>
+        <% end %>
+      </div>
+
+      <div id="advertisement-info" hidden="hidden" class="mt-5">
+        <hr>
+        <div class="mt-5">
+          <h1 class="text-2xl">Описание</h1>
+          <%= form.text_area :description,
+                             class:  "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500"%>
+        </div>
+
+        <hr class="my-5">
+        <div>
+          <h1 class="text-2xl">Местоположение товара/услуги</h1>
+
+          <div data-controller="region" data-region-url-value="<%= cities_advertisements_path %>" data-region-param-value="region">
+            <div>
+              <%= form.label 'Область', class: 'font-medium' %>
+              <%= form.collection_select :region_id, regions, :id, :name, { prompt: 'Выберите область' },
+                                         { data: { action: 'change->region#change' }, class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500" } %>
+            </div>
+
+            <div class="mt-4">
+              <%= form.label 'Город/Район', class: "font-medium" %>
+              <%= form.collection_select :city_id, [], :id, :name, { prompt: 'Выберите город' },
+                                         { data: { region_target: 'citySelect' }, class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500" } %>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-5">
+        <div>
+          <h1 class="text-2xl">О продавце</h1>
+          <div class="mt-4">
+            <%= form.label "E-mail", class: "block font-semibold text-gray-900" %>
+            <%= form.email_field :customer_email, autocomplete: "email",
+                              class: "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500", placeholder: "Почта", id: "email", value: current_user&.email %>
+          </div>
+          <div class="mt-4">
+            <%= form.label "Телефон", class: "block font-semibold text-gray-900" %>
+            <%= form.text_field :customer_phone,
+                                 class: "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500",
+                                placeholder: " Телефон", value: current_user&.phone_number %>
+          </div>
+          <div class="mt-4">
+            <%= form.label "Скрыть телефон?", class: "font-semibold text-gray-900" %>
+            <%= form.check_box :customer_phone,
+                                class: "form-check font-bold py-3 px-4 pr-9 block w-max rounded-full" %>
+          </div>
+        </div>
+
+        <%= form.submit "Подать объявление", class: "btn-deep-ocean mt-4" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -185,4 +185,36 @@ ActiveRecord::Base.transaction do
   SettingValue.create(value: 'Механика', category_setting: CategorySetting.last)
   CategorySetting.create(name: 'Пробег', values_type: 'text', required: true,
                          subcategory: Subcategory.find_by(name: 'Легковые авто'))
+  Subcategory.create(name: 'Мотоцикл', category: Category.find_by(name: 'Авто и транспорт'))
+  CategorySetting.create(name: 'Марка', values_type: 'select', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
+  brands = Services::Motorcycles::Makes::Receive.call.value.sort
+  brands.each do |brand|
+    SettingValue.create(value: brand, category_setting: CategorySetting.last)
+  end
+  CategorySetting.create(name: 'Тип мотоцикла', values_type: 'select', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
+  categories = Services::Motorcycles::Categories::Receive.call.value.sort
+  categories.each do |category|
+    SettingValue.create(value: category, category_setting: CategorySetting.last)
+  end
+  CategorySetting.create(name: 'Привод', values_type: 'radio', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
+  SettingValue.create(value: 'Кардан', category_setting: CategorySetting.last)
+  SettingValue.create(value: 'Ремень', category_setting: CategorySetting.last)
+  SettingValue.create(value: 'Цепь', category_setting: CategorySetting.last)
+  CategorySetting.create(name: 'Число тактов', values_type: 'radio', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
+  SettingValue.create(value: '2', category_setting: CategorySetting.last)
+  SettingValue.create(value: '4', category_setting: CategorySetting.last)
+  CategorySetting.create(name: 'Количество цилиндров', values_type: 'radio', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
+
+  SettingValue.create(value: '1', category_setting: CategorySetting.last)
+  SettingValue.create(value: '2', category_setting: CategorySetting.last)
+  SettingValue.create(value: '3', category_setting: CategorySetting.last)
+  SettingValue.create(value: '4', category_setting: CategorySetting.last)
+  SettingValue.create(value: '6', category_setting: CategorySetting.last)
+  CategorySetting.create(name: 'Пробег', values_type: 'text', required: true,
+                         subcategory: Subcategory.find_by(name: 'Мотоцикл'))
 end
