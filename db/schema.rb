@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_518_191_630) do
+ActiveRecord::Schema[7.0].define(version: 20_230_521_185_231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_518_191_630) do
     t.bigint 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'price', default: 0.0, null: false
     t.index ['city_id'], name: 'index_advertisements_on_city_id'
     t.index ['subcategory_id'], name: 'index_advertisements_on_subcategory_id'
     t.index ['user_id'], name: 'index_advertisements_on_user_id'
@@ -101,6 +102,11 @@ ActiveRecord::Schema[7.0].define(version: 20_230_518_191_630) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.string 'phone_number', default: ''
+    t.bigint 'city_id'
+    t.date 'birth_date'
+    t.boolean 'sex'
+    t.string 'name'
+    t.index ['city_id'], name: 'index_users_on_city_id'
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['phone_number'], name: 'unique_not_null_phone_number', unique: true, where: '(phone_number IS NOT NULL)'
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
@@ -114,4 +120,5 @@ ActiveRecord::Schema[7.0].define(version: 20_230_518_191_630) do
   add_foreign_key 'cities', 'regions'
   add_foreign_key 'setting_values', 'category_settings'
   add_foreign_key 'subcategories', 'categories'
+  add_foreign_key 'users', 'cities'
 end

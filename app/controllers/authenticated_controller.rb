@@ -15,7 +15,7 @@ class AuthenticatedController < ApplicationController
       redirect_back_or_to root_path
     else
       flash[:alert] = 'Что-то пошло не так'
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
