@@ -1,0 +1,11 @@
+<%= turbo_stream.update @target do  %>
+  <% @category_settings.each do |setting| %>
+    <% if setting.values_type == 'radio' %>
+      <%= render 'advertisements/setting_partials/radio', setting: setting, values: setting.setting_values %>
+    <% elsif setting.values_type == 'select' %>
+      <%= render 'advertisements/setting_partials/select', setting: setting, values: setting.setting_values %>
+    <% else %>
+      <%= render 'advertisements/setting_partials/text', setting: setting %>
+    <% end %>
+  <%  end %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= render 'shared/errors', object: @user %>
+
+<%= form_with(url: authenticated_index_path, local:true, class: 'mt-10', data: { turbo: false }) do |form|%>
+  <%= form.label "Номер телефона" %>
+  <%= form.text_field :phone_number, class: "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500",
+                      placeholder: " Телефон" %>
+  <%= form.submit "Подтвердить", class: "btn-deep-ocean mt-4" %>
+<% end %>

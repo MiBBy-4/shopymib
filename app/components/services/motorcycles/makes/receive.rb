@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Services
-  module Cars
+  module Motorcycles
     module Makes
       class Receive < Base::Service
-        CARS_API_URL = 'https://car-api2.p.rapidapi.com/api/makes'
+        MOTORCYCLES_API_URL = 'https://motorcycle-specs-database.p.rapidapi.com/make'
 
         def call
           brands = build_brands
@@ -19,7 +19,7 @@ module Services
 
           return unless response.status.success?
 
-          data = JSON.parse(response)['data']
+          data = JSON.parse(response)
 
           brands = data.pluck('name')
 
@@ -30,11 +30,11 @@ module Services
 
         def load_brands
           headers = {
-            'X-RapidAPI-Key' => ENV.fetch('X_RAPID_API_KEY', nil),
-            'X-RapidAPI-Host' => ENV.fetch('X_RAPID_API_HOSY', nil)
+            'X-RapidAPI-Key' => ENV.fetch('X_RAPID_API_MOTORCYCLES_KEY', nil),
+            'X-RapidAPI-Host' => ENV.fetch('X_RAPID_API_MOTORCYCLES_HOST', nil)
           }
 
-          HTTP.get(CARS_API_URL, headers:)
+          HTTP.get(MOTORCYCLES_API_URL, headers:)
         end
       end
     end
