@@ -16,6 +16,14 @@
     display: none;
 }
 
+.sidebar {
+    border-right: 1px !important;
+}
+
+.grid-cols-sidebar-main {
+    grid-template-columns: 300px 1fr;
+}
+
 .form-inp {
     background-color: rgb(255, 255, 255);
     color: rgb(158, 146, 146);

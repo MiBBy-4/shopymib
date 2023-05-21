@@ -1,0 +1,39 @@
+<div class="flex h-full">
+  <%= render 'settings/shared/sidebar' %>
+
+  <div class="flex-1 mt-20 pt-8">
+    <div>
+      <%= render 'shared/errors', object: @user %>
+      <%= form_with(model: User, url: account_contact_info_path, local: true, class: 'mt-10', data: { turbo: false },
+                    method: :patch)  do |form| %>
+        <div class="border-2 py-6 px-6">
+          <div data-controller="region" data-region-url-value="<%= cities_advertisements_path %>" data-region-param-value="region" class="flex justify-center py-4">
+            <div>
+              <h1 class="text-3xl text-center">Местоположение</h1>
+
+              <div>
+                <%= form.label 'Область', class: 'font-medium' %>
+                <%= form.collection_select :region_id, @regions, :id, :name, { prompt: 'Выберите область' },
+                                           { data: { action: 'change->region#change' },
+                                             class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500",
+                                             selected: current_user.city&.region
+                                           } %>
+              </div>
+
+              <div class="mt-4">
+                <%= form.label 'Город/Район', class: "font-medium" %>
+                <%= form.collection_select :city_id, [], :id, :name, { prompt: 'Выберите город' },
+                                           { data: { region_target: 'citySelect' },
+                                             class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500",
+                                             selected: current_user.city
+                                           } %>
+              </div>
+            </div>
+          </div>
+
+          <%= form.submit "Сохранить изменения", class: "btn-deep-ocean" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

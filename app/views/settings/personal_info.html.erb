@@ -1,0 +1,44 @@
+<div class="flex h-full">
+  <%= render 'settings/shared/sidebar' %>
+
+  <div class="flex-1 mt-20 pt-8">
+    <div>
+      <%= render 'shared/errors', object: @user %>
+      <%= form_with(model: User, url: account_personal_info_path, local: true, class: 'mt-10', data: { turbo: false },
+                    method: :patch)  do |form| %>
+        <div class="flex justify-center  border-2">
+          <div class="py-4">
+            <h1 class="text-3xl text-center">Данные профиля</h1>
+
+            <%= form.label 'Номер телефон' %>
+            <%= form.text_field :phone_number, value: current_user.phone_number,
+                                class: "form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500",
+                                placeholder: " Телефон"  %>
+            <%= form.label "E-mail", for: "email" %>
+            <input type="email" name="email" id="email" value="<%= current_user.email %>" disabled class="form-inp font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 cursor-not-allowed">
+          </div>
+        </div>
+        <div class="border-2 mt-5 py-6 px-6">
+          <div class="flex justify-center  ">
+            <div class="py-4">
+              <%= form.label 'Имя' %>
+              <%= form.text_field :name, value: current_user.name,
+                                  class: "form-inp w-full font-bold py-3 px-4 pr-9 block border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500",
+                                  placeholder: "Имя"  %>
+              <%= form.label "Пол", for: "sex" %>
+              <select name="user[sex]" class="form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500">
+                <option>Не выбрано</option>
+                <option value="0">Женский</option>
+                <option value="1">Мужской</option>
+              </select>
+              <%= form.label "Дата рождения" %>
+              <%= form.date_field :birth_date, value: current_user.birth_date,
+                                  class: "form-select font-bold py-3 px-4 pr-9 block w-max border-gray-200 rounded-full text-md focus:border-blue-500 focus:ring-blue-500" %>
+            </div>
+          </div>
+          <%= form.submit "Сохранить изменения", class: "btn-deep-ocean" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
